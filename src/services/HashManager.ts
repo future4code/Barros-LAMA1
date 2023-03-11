@@ -4,8 +4,8 @@ import * as bcrypt from "bcryptjs";
 export class HashManager {
 
     public async hashGenerator(text: string): Promise<string> {
-        const rounds = 12;
-        const salt = await bcrypt.genSalt(rounds);
+        const cost: number = Number(process.env.BCRYPT_COST)
+        const salt = await bcrypt.genSalt(cost);
         const result = await bcrypt.hash(text, salt);
         return result;
     }

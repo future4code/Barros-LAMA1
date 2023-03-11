@@ -1,4 +1,4 @@
-import { UserInputDTO, LoginInputDTO } from "../model/User";
+import { UserInputDTO, LoginInputDTO, UserRole } from "../model/User";
 import { UserDatabase } from "../data/UserDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
@@ -31,6 +31,10 @@ console.log(email,name,password,role);
             }
 
             const id = idGenerator.generate();
+
+            if (role.toUpperCase() !== UserRole.ADMIN && role.toUpperCase() !== UserRole.NORMAL) {
+                throw new CustomError(400, "Invalid NORMAL, ADMIN");
+              }
 
             const hashPassword = await hashManager.hashGenerator(password);
 
@@ -68,4 +72,34 @@ console.log(email,name,password,role);
 
     //     return accessToken;
     // }
+
+    public async login({ email, password }: LoginInputDTO): Promise<string> {
+        try {
+            if (!email || !password) {
+                throw new CustomError(400, 'Fill in the fields "email" and "password"');
+            }
+            if (!email.includes("@")) {
+                throw new CustomError(400, "Invalid email address");
+            }
+
+            const user = await userDatabase.getUserByEmail(email)
+
+            if (!user) {
+                throw new CustomError (400,"User Not Found")
+            }
+
+            const comparePassword: boolean = await hashManager.compare(password, user.password)
+
+            if (!comparePassword) {
+                throw new CustomError(400, "Invalid password");
+              }
+
+            const token = await authenticator.generateToken({ id: user.id, role: user.role })
+
+            return token;
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
+    }
 }

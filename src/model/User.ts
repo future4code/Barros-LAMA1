@@ -1,69 +1,69 @@
-export class User{
-    constructor(
-    private id: string,
-    private name: string,
-    private email: string,
-    private password: string,
-    private role: UserRole
-    ){}
-
-    getId(){
-        return this.id;
+export interface User{
+    id: string,
+    email: string,
+    password: string,
+    name: string,
+    nickname: string,
+    role: string
     }
 
-    getName(){
-        return this.name
-    }
+//     getId(){
+//         return this.id;
+//     }
 
-    getEmail(){
-        return this.email;
-    }
+//     getName(){
+//         return this.name
+//     }
 
-    getPassword(){
-        return this.password;
-    }
+//     getEmail(){
+//         return this.email;
+//     }
 
-    getRole(){
-        return this.role;
-    }
+//     getPassword(){
+//         return this.password;
+//     }
 
-    setId(id: string){
-        this.id = id;
-    }
+//     getRole(){
+//         return this.role;
+//     }
 
-    setName(name: string){
-        this.name = name;
-    }
+//     setId(id: string){
+//         this.id = id;
+//     }
 
-    setEmail(email: string){
-        this.email = email;
-    }
+//     setName(name: string){
+//         this.name = name;
+//     }
 
-    setPassword(password: string){
-        this.password = password;
-    }
+//     setEmail(email: string){
+//         this.email = email;
+//     }
 
-    setRole(role: UserRole){
-        this.role = role;
-    }
+//     setPassword(password: string){
+//         this.password = password;
+//     }
 
-   static stringToUserRole(input: string): UserRole{
-        switch (input) {
-            case "NORMAL":
-              return UserRole.NORMAL;
-            case "ADMIN":
-              return UserRole.ADMIN;
-            default:
-              throw new Error("Invalid user role");
-          }
-    }
+//     setRole(role: UserRole){
+//         this.role = role;
+//     }
 
-    static toUserModel(user: any): User {
-        return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
-      }
+//    static stringToUserRole(input: string): UserRole{
+//         switch (input) {
+//             case "NORMAL":
+//               return UserRole.NORMAL;
+//             case "ADMIN":
+//               return UserRole.ADMIN;
+//             default:
+//               throw new Error("Invalid user role");
+//           }
+//     }
+
+//     static toUserModel(user: any): User {
+//         return new User(user.id, user.name, user.email, user.password, User.stringToUserRole(user.role));
+//       }
 
 
-}
+// }
 export interface UserDTO {
     id: string,
     name: string,

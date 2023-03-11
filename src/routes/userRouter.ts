@@ -8,4 +8,4 @@ const userController = new UserController();
 
 userRouter.post("/create", userController.createUser);
 
-// userRouter.post("/login", userController.login);
+userRouter.post("/login", userController.login);

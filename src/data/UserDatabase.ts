@@ -29,7 +29,7 @@ export class UserDatabase extends BaseDatabase {
       .from(UserDatabase.TABLE_NAME)
       .where({ email });
 
-    return User.toUserModel(result[0]);
+    return (result[0]);
   }
 
 }
