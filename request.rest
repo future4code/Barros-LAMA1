@@ -17,3 +17,14 @@ Content-Type: application/json
     "email":"bananinha@gmail.com" ,
     "password": "1234567"
 }
+
+###
+POST http://localhost:3003/band/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3ODg2OCwiZXhwIjoxNjc4NTgyNDY4fQ.erbqSR2Te-xdeAHfy4BxTz4qCLXEXDao-mOVUzqgLoU
+
+{
+    "name": "twenty one pilots",
+    "musicGenre": "rock-music",
+    "responsible":"Caroline"
+}

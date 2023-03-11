@@ -19,7 +19,7 @@ export class BandController {
 
             res.status(201).send({ message: "Band created successfully!" })
         } catch (error: any) {
-            throw new Error(error.message || error.sqlMessage);
+            res.status(400).send({ error: error.message });
         }
 
     }
