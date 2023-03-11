@@ -1,43 +1,87 @@
-import { UserInputDTO, LoginInputDTO } from "../model/User";
+import { UserInputDTO, LoginInputDTO, UserRole } from "../model/User";
 import { UserDatabase } from "../data/UserDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
+import { CustomError } from "../error/BaseError";
 
+const idGenerator = new IdGenerator();
+const hashManager = new HashManager();
+const userDatabase = new UserDatabase();
+const authenticator = new Authenticator();
 export class UserBusiness {
 
-    async createUser(user: UserInputDTO) {
+    public async createUser({ email, name, password, role }: UserInputDTO) {
+        try {
+            console.log(email, name, password, role);
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
 
-        const hashManager = new HashManager();
-        const hashPassword = await hashManager.hash(user.password);
+            if (!name || !email || !password) {
+                throw new CustomError(400, 'Fill in the fields "name", "email" and "password"');
+            }
+            if (name.length < 3) {
+                throw new CustomError(400, 'Very short name');
+            }
 
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, user.email, user.name, hashPassword, user.role);
+            if (password.length <= 6) {
+                throw new CustomError(400, 'Invalid password');
+            }
+            if (!email.includes("@")) {
+                throw new CustomError(400, "Invalid email address");
+            }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id, role: user.role });
+            const id = idGenerator.generate();
 
-        return accessToken;
+            if (role.toUpperCase() !== UserRole.ADMIN && role.toUpperCase() !== UserRole.NORMAL) {
+                throw new CustomError(400, "Invalid NORMAL, ADMIN");
+            }
+
+            const hashPassword = await hashManager.hashGenerator(password);
+
+            await userDatabase.createUser(
+                id,
+                email,
+                name,
+                password = hashPassword,
+                role
+            );
+
+            const accessToken = authenticator.generateToken({ id, role: role });
+
+            return accessToken;
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
     }
 
-    async getUserByEmail(user: LoginInputDTO) {
+    public async login({ email, password }: LoginInputDTO): Promise<string> {
+        try {
+            if (!email || !password) {
+                throw new CustomError(400, 'Fill in the fields "email" and "password"');
+            }
+            if (!email.includes("@")) {
+                throw new CustomError(400, "Invalid email address");
+            }
 
-        const userDatabase = new UserDatabase();
-        const userFromDB = await userDatabase.getUserByEmail(user.email);
+            const user = await userDatabase.getUserByEmail(email)
 
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+            if (!user) {
+                throw new CustomError(400, "User Not Found")
+            }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+            const comparePassword: boolean = await hashManager.compare(password, user.password)
 
-        if (!hashCompare) {
-            throw new Error("Invalid Password!");
+            if (!comparePassword) {
+                throw new CustomError(400, "Invalid password");
+            }
+
+            const token = await authenticator.generateToken({ id: user.id, role: user.role })
+
+            return token;
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
         }
-
-        return accessToken;
     }
 }
