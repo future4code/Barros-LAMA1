@@ -1,11 +1,11 @@
-export interface User{
+export interface User {
     id: string,
     email: string,
     password: string,
     name: string,
     nickname: string,
     role: string
-    }
+}
 
 //     getId(){
 //         return this.id;
@@ -71,19 +71,19 @@ export interface UserDTO {
     password: string
 }
 
-export interface UserInputDTO{
+export interface UserInputDTO {
     email: string;
     password: string;
     name: string;
     role: string;
 }
 
-export interface LoginInputDTO{
+export interface LoginInputDTO {
     email: string;
     password: string;
 }
 
-export enum UserRole{
+export enum UserRole {
     NORMAL = "NORMAL",
     ADMIN = "ADMIN"
 }

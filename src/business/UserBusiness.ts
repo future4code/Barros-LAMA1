@@ -13,7 +13,7 @@ export class UserBusiness {
 
     public async createUser({ email, name, password, role }: UserInputDTO) {
         try {
-console.log(email,name,password,role);
+            console.log(email, name, password, role);
 
 
             if (!name || !email || !password) {
@@ -34,7 +34,7 @@ console.log(email,name,password,role);
 
             if (role.toUpperCase() !== UserRole.ADMIN && role.toUpperCase() !== UserRole.NORMAL) {
                 throw new CustomError(400, "Invalid NORMAL, ADMIN");
-              }
+            }
 
             const hashPassword = await hashManager.hashGenerator(password);
 
@@ -55,24 +55,6 @@ console.log(email,name,password,role);
         }
     }
 
-    // async getUserByEmail(user: LoginInputDTO) {
-
-    //     const userDatabase = new UserDatabase();
-    //     const userFromDB = await userDatabase.getUserByEmail(user.email);
-
-    //     const hashManager = new HashManager();
-    //     const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
-
-    //     const authenticator = new Authenticator();
-    //     const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
-
-    //     if (!hashCompare) {
-    //         throw new Error("Invalid Password!");
-    //     }
-
-    //     return accessToken;
-    // }
-
     public async login({ email, password }: LoginInputDTO): Promise<string> {
         try {
             if (!email || !password) {
@@ -85,14 +67,14 @@ console.log(email,name,password,role);
             const user = await userDatabase.getUserByEmail(email)
 
             if (!user) {
-                throw new CustomError (400,"User Not Found")
+                throw new CustomError(400, "User Not Found")
             }
 
             const comparePassword: boolean = await hashManager.compare(password, user.password)
 
             if (!comparePassword) {
                 throw new CustomError(400, "Invalid password");
-              }
+            }
 
             const token = await authenticator.generateToken({ id: user.id, role: user.role })
 

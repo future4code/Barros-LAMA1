@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { UserInputDTO, LoginInputDTO } from "../model/User";
 import { UserBusiness } from "../business/UserBusiness";
-import { BaseDatabase } from "../data/BaseDatabase";
 
 const userBusiness = new UserBusiness();
 export class UserController {
@@ -26,7 +25,6 @@ export class UserController {
             res.status(400).send({ error: error.message });
         }
 
-        // await BaseDatabase.destroyConnection();
     }
 
     public async login(req: Request, res: Response) {
@@ -46,7 +44,6 @@ export class UserController {
             res.status(400).send({ error: error.message });
         }
 
-        // await BaseDatabase.destroyConnection();
     }
 
 }

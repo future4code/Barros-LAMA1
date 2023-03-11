@@ -7,6 +7,7 @@ const app = express();
 
 app.use(express.json());
 
+///ENDPOINT USER
 app.use("/user", userRouter);
 
 const server = app.listen(3003, () => {
