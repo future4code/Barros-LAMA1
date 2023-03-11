@@ -1,5 +1,9 @@
-import * as jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken"
 
+interface AuthenticationData {
+  id: string;
+  role?: string;
+}
 export class Authenticator {
   public generateToken(input: AuthenticationData,
     expiresIn: string = process.env.ACCESS_TOKEN_EXPIRES_IN!): string {
@@ -10,14 +14,15 @@ export class Authenticator {
       },
       process.env.JWT_KEY as string,
       {
-        expiresIn,
+        expiresIn
       }
     );
     return token;
   }
 
   public getData(token: string): AuthenticationData {
-    const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
+    const payload = jwt.verify(
+      token, process.env.JWT_KEY as string) as any;
     const result = {
       id: payload.id,
       role: payload.role
@@ -26,7 +31,25 @@ export class Authenticator {
   }
 }
 
-interface AuthenticationData {
-  id: string;
-  role?: string;
-}
+
+
+// export class Authenticator {
+
+//   public generateToken = ({ id , role}: AuthenticationData) => {
+//       const token = jwt.sign(
+//           { id, role },
+//           process.env.JWT_KEY as string,
+//           { expiresIn: "4h" }
+//       )
+//       return token
+//   }
+
+//   public tokenData = (token: string): AuthenticationData => {
+//       const payload = jwt.verify(
+//           token,
+//           process.env.JWT_KEY as string
+//       ) as jwt.JwtPayload
+
+//       return { id: payload.id as string, role: payload.role as string }
+//   }
+// }

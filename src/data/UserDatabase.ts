@@ -3,17 +3,11 @@ import { User } from "../model/User";
 
 export class UserDatabase extends BaseDatabase {
 
-  private static TABLE_NAME = "";
+  private static TABLE_NAME = "users_shows";
 
-  public async createUser(
-    id: string,
-    email: string,
-    name: string,
-    password: string,
-    role: string
-  ): Promise<void> {
+  public async createUser(id: string, email: string, name: string,password: string,role: string): Promise<any> {
     try {
-      await this.getConnection()
+      const result =await this.getConnection()      
         .insert({
           id,
           email,
@@ -22,6 +16,8 @@ export class UserDatabase extends BaseDatabase {
           role
         })
         .into(UserDatabase.TABLE_NAME);
+        console.log(result);
+        
     } catch (error:any) {
       throw new Error(error.sqlMessage || error.message);
     }

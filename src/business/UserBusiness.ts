@@ -3,41 +3,69 @@ import { UserDatabase } from "../data/UserDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
+import { CustomError } from "../error/BaseError";
 
+const idGenerator = new IdGenerator();
+const hashManager = new HashManager();
+const userDatabase = new UserDatabase();
+const authenticator = new Authenticator();
 export class UserBusiness {
 
-    async createUser(user: UserInputDTO) {
+    public async createUser({ email, name, password, role }: UserInputDTO) {
+        try {
+console.log(email,name,password,role);
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
 
-        const hashManager = new HashManager();
-        const hashPassword = await hashManager.hash(user.password);
+            if (!name || !email || !password) {
+                throw new CustomError(400, 'Fill in the fields "name", "email" and "password"');
+            }
+            if (name.length < 3) {
+                throw new CustomError(400, 'Very short name');
+            }
 
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, user.email, user.name, hashPassword, user.role);
+            if (password.length <= 6) {
+                throw new CustomError(400, 'Invalid password');
+            }
+            if (!email.includes("@")) {
+                throw new CustomError(400, "Invalid email address");
+            }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id, role: user.role });
+            const id = idGenerator.generate();
 
-        return accessToken;
-    }
+            const hashPassword = await hashManager.hashGenerator(password);
 
-    async getUserByEmail(user: LoginInputDTO) {
+            await userDatabase.createUser(
+                id,
+                email,
+                name,
+                password = hashPassword,
+                role
+            );
 
-        const userDatabase = new UserDatabase();
-        const userFromDB = await userDatabase.getUserByEmail(user.email);
+            const accessToken = authenticator.generateToken({ id, role: role });
 
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+            return accessToken;
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
-
-        if (!hashCompare) {
-            throw new Error("Invalid Password!");
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
         }
-
-        return accessToken;
     }
+
+    // async getUserByEmail(user: LoginInputDTO) {
+
+    //     const userDatabase = new UserDatabase();
+    //     const userFromDB = await userDatabase.getUserByEmail(user.email);
+
+    //     const hashManager = new HashManager();
+    //     const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+
+    //     const authenticator = new Authenticator();
+    //     const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+
+    //     if (!hashCompare) {
+    //         throw new Error("Invalid Password!");
+    //     }
+
+    //     return accessToken;
+    // }
 }

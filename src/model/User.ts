@@ -64,6 +64,12 @@ export class User{
 
 
 }
+export interface UserDTO {
+    id: string,
+    name: string,
+    email: string,
+    password: string
+}
 
 export interface UserInputDTO{
     email: string;
