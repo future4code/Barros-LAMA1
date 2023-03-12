@@ -4,8 +4,8 @@
   "description": "Projeto LAMA",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev ./src/index.ts",
-    "start": "tsc && node ./build/index.js"
+    "start": "tsc && node build/index.js",
+    "dev": "ts-node-dev ./src/index.ts"
   },
   "keywords": [
     "api",
