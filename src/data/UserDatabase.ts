@@ -16,8 +16,7 @@ export class UserDatabase extends BaseDatabase {
           role
         })
         .into(UserDatabase.TABLE_NAME);
-        console.log(result);
-        
+
     } catch (error:any) {
       throw new Error(error.sqlMessage || error.message);
     }

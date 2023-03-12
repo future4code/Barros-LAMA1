@@ -13,8 +13,6 @@ export class UserBusiness {
 
     public async createUser({ email, name, password, role }: UserInputDTO) {
         try {
-            console.log(email, name, password, role);
-
 
             if (!name || !email || !password) {
                 throw new CustomError(400, 'Fill in the fields "name", "email" and "password"');
