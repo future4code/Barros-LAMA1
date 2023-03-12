@@ -23,7 +23,23 @@ export class ShowController {
         } catch (error: any) {
             res.status(400).send({ error: error.message });
         }
+    }
 
+    getAllShowDay=async(req:Request, res:Response) => {
+
+        try{    
+
+            const authentication = req.headers.authorization as string
+
+            const weekDay = req.body.weekDay
+
+            const bands = await showBusinnes.getAllShowDay(weekDay,authentication)
+
+            res.status(200).send(bands)
+
+        }catch(error: any){
+            res.status(400).send({ error: error.message });
+        }
 
     }
 }

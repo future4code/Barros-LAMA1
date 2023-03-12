@@ -26,8 +26,8 @@ export class ShowDatabase extends BaseDatabase{
         const result = await this.getConnection()
         .select("name","music_genre")
         .from("bands as b")
-        .join("show as s","b.band_id", "b.id")
-        .where({week_id: weekDay})
+        .join("shows as s","s.band_id", "b.id")
+        .where({week_day: weekDay})
         .orderBy("s.start_time", "asc")
 
         console.log(result);
