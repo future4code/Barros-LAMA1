@@ -28,3 +28,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgt
     "musicGenre": "pagode",
     "responsible":"Ana"
 }
+
+###
+GET http://localhost:3003/band/get 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3OTUyMSwiZXhwIjoxNjc4NTgzMTIxfQ.HCWXKUlbH1XuZvJod2opbZRI94s2nihZHm_hxoHK9_E
+
+{
+    "id": "69446129-691a-44c6-96c6-747a6f7918e8"
+}

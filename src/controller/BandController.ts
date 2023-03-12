@@ -23,4 +23,21 @@ export class BandController {
         }
 
     }
+
+    getAllIdBand = async (req: Request, res: Response) => {
+
+        try{
+            const idAutorization = req.headers.authorization as string;
+
+            const id = req.body.id
+
+            const result = await bandBusiness.getAllIdBand(id, idAutorization)
+
+            res.status(200).send(result)
+
+        }catch(error:any) {
+            res.status(400).send({ error: error.message });
+        }
+    }
+
 }

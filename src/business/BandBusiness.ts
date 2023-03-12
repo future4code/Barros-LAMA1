@@ -45,4 +45,25 @@ export class BandBusiness {
         }
 
     }
+
+    public getAllIdBand = async (id:string, idAutorization:string)=>{
+        try{
+            if(!id){
+                throw new CustomError(400, "Invalid id");
+            }
+
+            const authorizationId = authenticator.getData(idAutorization);
+            
+            if(!authorizationId){
+                throw new CustomError(400, "Invalid authorization");
+            }
+
+
+            const result = bandDatabase.getAllId(id)
+
+            return result
+        }catch(error:any){
+            throw new CustomError(400, error.message);
+        }
+    }
 }
