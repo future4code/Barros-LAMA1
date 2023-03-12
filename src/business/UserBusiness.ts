@@ -46,7 +46,7 @@ export class UserBusiness {
 
             const accessToken = authenticator.generateToken({ id, role: role });
 
-            return accessToken;
+            return (accessToken);
 
         } catch (error: any) {
             throw new CustomError(400, error.message);
