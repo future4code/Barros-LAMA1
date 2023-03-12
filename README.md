@@ -6,6 +6,7 @@ Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa
 ✅ Login;</br>
 ✅ Registrar banda (com autorização administrativa)</br>
 ✅ Visualizar detalhes da banda</br>
+⬛ Adicionar show a um dia </br>
 ✅ Pegar todos os shows de uma data</br>
 
 ---
