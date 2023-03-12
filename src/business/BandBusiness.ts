@@ -1,6 +1,7 @@
 import { BandDatabase } from "../data/BandDatabase";
 import { CustomError } from "../error/BaseError";
 import { InputBandDTO, InsertBandDTO } from "../model/Band";
+import { UserRole } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
@@ -22,6 +23,10 @@ export class BandBusiness {
             }
 
             const idUser = authenticator.getData(idAutorization)
+
+            if(idUser.role !== UserRole.ADMIN){
+                throw new Error("Only a normal user can access this funcionality");
+            }
 
             const id = idGenerator.generate()
 

@@ -2,10 +2,10 @@ POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "email": "bananinha@gmail.com",
-    "name": "Bananinha",
+    "email": "caroline@email.com",
+    "name": "Carol",
     "password": "1234567",
-    "role": "ADMIN"
+    "role": "NORMAL"
 
 }
 
@@ -21,10 +21,10 @@ Content-Type: application/json
 ###
 POST http://localhost:3003/band/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3ODg2OCwiZXhwIjoxNjc4NTgyNDY4fQ.erbqSR2Te-xdeAHfy4BxTz4qCLXEXDao-mOVUzqgLoU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3OTUyMSwiZXhwIjoxNjc4NTgzMTIxfQ.HCWXKUlbH1XuZvJod2opbZRI94s2nihZHm_hxoHK9_E
 
 {
-    "name": "twenty one pilots",
-    "musicGenre": "rock-music",
-    "responsible":"Caroline"
+    "name": "Muleque",
+    "musicGenre": "pagode",
+    "responsible":"Ana"
 }
