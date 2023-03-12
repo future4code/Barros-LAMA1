@@ -4,6 +4,8 @@ Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa
 <h3 align="center" > 💻 Funcionalidades:</br></h3>
 ✅ Cadastrar pessoas usuária;</br>
 ✅ Login;</br>
+✅ Registrar banda (com autorização administrativa)</br>
+✅ Visualizar detalhes da banda</br>
 
 
 ---
