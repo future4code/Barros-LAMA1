@@ -14,7 +14,7 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email":"caroline@email.com" ,
+    "email":"bananinha@gmail.com" ,
     "password": "1234567"
 }
 
@@ -41,11 +41,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgt
 ###
 POST http://localhost:3003/show/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDM1MzUzLTE1YWYtNDEyYS1hMWUwLTc1YzEzYmZhYWU1MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2Nzg2MzE0ODksImV4cCI6MTY3ODYzNTA4OX0.uSNe53kgddisSeh0ATfuF_06rWi01fz-nE3aYSvLyS4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODYzMDExNSwiZXhwIjoxNjc4NjMzNzE1fQ.aO3l2iBhAtgnMC_yUNpbjP2vMRl0bduMA0j2WQHdUMI
 
 {
-    "weekDay": "sab",
+    "weekDay": "domingo",
     "startTime": 9,
     "endTime": 11,
-    "bandId": "69446129-691a-44c6-96c6-747a6f7918e8"
+    "bandId": "70d93276-59d5-44b2-98cb-c36f74696255"
 }

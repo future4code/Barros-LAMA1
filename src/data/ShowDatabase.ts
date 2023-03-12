@@ -14,7 +14,25 @@ export class ShowDatabase extends BaseDatabase{
                 end_time:endTime,
                 band_id:bandId
             }).into(ShowDatabase.TABLE_NAME)
-console.log(result);
+
+        }catch(error:any){
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    getAllDay = async (weekDay:string)=>{
+        try{
+
+        const result = await this.getConnection()
+        .select("name","music_genre")
+        .from("bands as b")
+        .join("show as s","b.band_id", "b.id")
+        .where({week_id: weekDay})
+        .orderBy("s.start_time", "asc")
+
+        console.log(result);
+        
+        return (result)
 
         }catch(error:any){
             throw new Error(error.sqlMessage || error.message);
