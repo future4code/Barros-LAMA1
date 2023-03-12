@@ -5,7 +5,7 @@ Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa
 ✅ Cadastrar pessoas usuária;</br>
 ✅ Login;</br>
 ✅ Registrar banda (com autorização administrativa)</br>
-✅ Visualizar detalhes da banda</br>;
+✅ Visualizar detalhes da banda</br>
 ✅ Pegar todos os shows de uma data</br>
 
 ---
