@@ -43,10 +43,25 @@ export class ShowBusiness{
             bandId: bandId,
             idAutentication: authenticatorId
         }
-        console.log(insertShow);
-        
-
         await showDatabase.create(insertShow)
+
+        }catch(error:any){
+            throw new CustomError(400, error.message);
+        }
+    }
+
+    getAllShowDay=async (weekDay:string, authentication:string)=>{
+        try{
+            const dataAutentication = authenticator.getData(authentication);
+        
+            if(!dataAutentication){
+                throw new CustomError(400, "Invalid authentication")
+            }else{
+
+                const bands = await showDatabase.getAllDay(weekDay)
+            
+                return bands
+            }
 
         }catch(error:any){
             throw new CustomError(400, error.message);
