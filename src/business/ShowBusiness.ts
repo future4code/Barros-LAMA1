@@ -1,6 +1,6 @@
 import { ShowDatabase } from "../data/ShowDatabase";
 import { CustomError } from "../error/BaseError";
-import { InputShow, Show, WeekDay } from "../model/Show";
+import { InputShow, Show, WeekDayEnum } from "../model/Show";
 import { UserRole } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
@@ -17,10 +17,15 @@ export class ShowBusiness{
             throw new CustomError(400, "Invalid startTime or endTime or bandId")
         }
          
-        if(weekDay.toUpperCase() !== WeekDay.SABADO || 
-        weekDay.toUpperCase() !== WeekDay.DOMINGO || weekDay.toUpperCase() !== WeekDay.SEXTA){
-            throw new CustomError(400, "Invalid week day 'sexta', 'sabado' or 'domingo' ");
-        }
+        // if(weekDay.toUpperCase() !== WeekDayEnum.SEXTA ){
+        //     throw new CustomError(400, "Invalid week day 'sexta', 'sabado' or 'domingo' ");
+        // }
+        // if(weekDay.toUpperCase() !== WeekDayEnum.SABADO){
+        //     throw new CustomError(400, "Invalid week day  'sabado' ");
+        // }
+        // if(weekDay.toUpperCase() !==  WeekDayEnum.DOMINGO){
+        //     throw new CustomError(400, "Invalid week day  'domingo' ");
+        // }
 
         const id = idGenerator.generate()
 
@@ -38,6 +43,8 @@ export class ShowBusiness{
             bandId: bandId,
             idAutentication: authenticatorId
         }
+        console.log(insertShow);
+        
 
         await showDatabase.create(insertShow)
 

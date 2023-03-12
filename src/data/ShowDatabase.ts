@@ -6,7 +6,7 @@ export class ShowDatabase extends BaseDatabase{
 
     create = async({id, weekDay, startTime, endTime, bandId}:Show)=>{
         try{
-            await this.getConnection()
+           const result = await this.getConnection()
             .insert({
                 id:id,
                 week_day:weekDay,
@@ -14,6 +14,7 @@ export class ShowDatabase extends BaseDatabase{
                 end_time:endTime,
                 band_id:bandId
             }).into(ShowDatabase.TABLE_NAME)
+console.log(result);
 
         }catch(error:any){
             throw new Error(error.sqlMessage || error.message);

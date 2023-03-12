@@ -14,7 +14,7 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email":"bananinha@gmail.com" ,
+    "email":"caroline@email.com" ,
     "password": "1234567"
 }
 
@@ -36,4 +36,16 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgt
 
 {
     "id": "69446129-691a-44c6-96c6-747a6f7918e8"
+}
+
+###
+POST http://localhost:3003/show/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDM1MzUzLTE1YWYtNDEyYS1hMWUwLTc1YzEzYmZhYWU1MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2Nzg2MzE0ODksImV4cCI6MTY3ODYzNTA4OX0.uSNe53kgddisSeh0ATfuF_06rWi01fz-nE3aYSvLyS4
+
+{
+    "weekDay": "sab",
+    "startTime": 9,
+    "endTime": 11,
+    "bandId": "69446129-691a-44c6-96c6-747a6f7918e8"
 }
