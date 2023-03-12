@@ -7,7 +7,7 @@ export class UserDatabase extends BaseDatabase {
 
   public async createUser(id: string, email: string, name: string,password: string,role: string): Promise<any> {
     try {
-      const result =await this.getConnection()      
+      await this.getConnection()      
         .insert({
           id,
           email,

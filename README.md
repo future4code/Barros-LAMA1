@@ -5,8 +5,14 @@ Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa
 ✅ Cadastrar pessoas usuária;</br>
 ✅ Login;</br>
 ✅ Registrar banda (com autorização administrativa)</br>
-✅ Visualizar detalhes da banda</br>
+✅ Visualizar detalhes da banda</br>;
+✅ Pegar todos os shows de uma data</br>
 
+---
+<h3 align="center" > ❌ Problemas:</br></h3>
+
+Show não está retornando erro para marcar na mesma hora e dia.(ou seja pode marcar diversos shows simultaneamente)
+Sem validação de horário 
 
 ---
 
