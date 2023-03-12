@@ -29,8 +29,6 @@ export class ShowDatabase extends BaseDatabase{
         .join("shows as s","s.band_id", "b.id")
         .where({week_day: weekDay})
         .orderBy("s.start_time", "asc")
-
-        console.log(result);
         
         return (result)
 
