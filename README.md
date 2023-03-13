@@ -6,13 +6,14 @@ Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa
 ✅ Login;</br>
 ✅ Registrar banda (com autorização administrativa)</br>
 ✅ Visualizar detalhes da banda</br>
-⬛ Adicionar show a um dia </br>
+✅ Adicionar show a um dia </br>
 ✅ Pegar todos os shows de uma data</br>
 
 ---
 <h3 align="center" > ❌ Problemas:</br></h3>
 
-Show não está retornando erro para marcar na mesma hora e dia.(ou seja pode marcar diversos shows simultaneamente)
+Show não está retornando erro para marcar na mesma hora e dia.</br>
+(ou seja pode marcar diversos shows simultaneamente)
 Sem validação de horário 
 
 ---
@@ -77,5 +78,5 @@ Ainda no .env, preencher também as variáveis:
 
     JWT_KEY: ,                  (palavra passe)
     BCRYPT_COST: ,              (cost da lib Bcrypt, geralmente 12)
-    ACCESS_TOKEN_EXPIRES_IN = 60min
+    ACCESS_TOKEN_EXPIRES_IN = 1day
 
