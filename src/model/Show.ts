@@ -15,9 +15,9 @@ export interface InputShow {
 }
 
 export enum WeekDayEnum{
-    SEXTA = "sexta",
-    SABADO = "sabado",
-    DOMINGO = "domingo"
+    SEXTA = "SEXTA",
+    SABADO = "SABADO",
+    DOMINGO = "DOMINGO"
 }
 
 export interface CreateShow{

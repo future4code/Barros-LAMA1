@@ -13,19 +13,17 @@ export class ShowBusiness{
 
     createShow = async ({weekDay, startTime, endTime, bandId, idAutentication}:InputShow)=>{
         try{
+
         if(!startTime || !endTime || !bandId){
             throw new CustomError(400, "Invalid startTime or endTime or bandId")
         }
          
-        // if(weekDay.toUpperCase() !== WeekDayEnum.SEXTA ){
-        //     throw new CustomError(400, "Invalid week day 'sexta', 'sabado' or 'domingo' ");
-        // }
-        // if(weekDay.toUpperCase() !== WeekDayEnum.SABADO){
-        //     throw new CustomError(400, "Invalid week day  'sabado' ");
-        // }
-        // if(weekDay.toUpperCase() !==  WeekDayEnum.DOMINGO){
-        //     throw new CustomError(400, "Invalid week day  'domingo' ");
-        // }
+        if(weekDay.toUpperCase() === WeekDayEnum.SEXTA ||  weekDay.toUpperCase() === WeekDayEnum.SABADO || weekDay.toUpperCase() ===  WeekDayEnum.DOMINGO){
+         
+        }else{
+            throw new CustomError(400, "Invalid 'SEXT' ")
+        }
+       
 
         const id = idGenerator.generate()
 

@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 export const app = express()
 
