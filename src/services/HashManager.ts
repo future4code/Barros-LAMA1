@@ -1,5 +1,7 @@
 import * as bcrypt from "bcryptjs";
+import dotenv from "dotenv"
 
+dotenv.config()
 
 export class HashManager {
 

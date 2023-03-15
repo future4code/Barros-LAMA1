@@ -1,5 +1,7 @@
 import * as jwt from "jsonwebtoken"
+import dotenv from "dotenv"
 
+dotenv.config()
 interface AuthenticationData {
   id: string;
   role?: string;
@@ -17,6 +19,7 @@ export class Authenticator {
         expiresIn
       }
     );
+    
     return token;
   }
 

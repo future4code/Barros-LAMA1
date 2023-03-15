@@ -1,7 +1,13 @@
 import knex, { Knex } from "knex";
+import dotenv from "dotenv"
 
+dotenv.config()
 export abstract class BaseDatabase {
-
+    // DB_HOST = 35.226.146.116
+    // DB_USER = "4416152-caroline-martins"
+    // DB_PASSWORD = "YH1fV093Kl57DXfCnDFY"
+    // DB_DATABASE_NAME = "jbl-4416152-caroline-martins"
+    
     private static connection: Knex | null = null;
 
     protected getConnection(): Knex{
