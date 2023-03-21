@@ -24,7 +24,7 @@ export class BandBusiness {
 
             const idUser = authenticator.getData(idAutorization)
 
-            if(idUser.role !== UserRole.ADMIN){
+            if(idUser.role?.toUpperCase() !== UserRole.ADMIN){
                 throw new Error("Only a normal user can access this funcionality");
             }
 
