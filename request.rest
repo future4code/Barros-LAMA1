@@ -1,0 +1,67 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "email": "caroSEMIF@platnao",
+    "name": "Plantão",
+    "password": "1234567",
+    "role": "NORMAL"
+
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email":"bananinha@gmail.com" ,
+    "password": "1234567"
+}
+
+// babaninha@gmail.com é um email com role de ADMIN
+
+###
+//só para admin
+POST http://localhost:3003/band/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3OTUyMSwiZXhwIjoxNjc4NTgzMTIxfQ.HCWXKUlbH1XuZvJod2opbZRI94s2nihZHm_hxoHK9_E
+
+{
+    "name": "Muleque",
+    "musicGenre": "pagode",
+    "responsible":"Ana"
+}
+
+###
+GET http://localhost:3003/band/get 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODU3OTUyMSwiZXhwIjoxNjc4NTgzMTIxfQ.HCWXKUlbH1XuZvJod2opbZRI94s2nihZHm_hxoHK9_E
+
+{
+    "id": "69446129-691a-44c6-96c6-747a6f7918e8"
+}
+
+###
+// só admin
+POST http://localhost:3003/show/create
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODgzOTU1MSwiZXhwIjoxNjc5MTg1MTUxfQ.7rfJBH13HaK2ututuVsEVzogBKGiu9H7EpO3fXXjH14
+
+{
+    "weekDay": "DOMINGO",
+    "startTime": 9,
+    "endTime": 11,
+    "bandId": "70d93276-59d5-44b2-98cb-c36f74696255"
+}
+
+###
+GET http://localhost:3003/show/day
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQyY2E3MGJiLWMwNDgtNDEzZS1hY2YzLWZmYjg3NTgzOGFiNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3ODYzNDcyMywiZXhwIjoxNjc4NjM4MzIzfQ.0OGIOwvGn40mv8gT3hzynrn69F9mzGYC-IhG47ppbos
+
+{
+    "weekDay": "domingo"
+}
+
+###
+GET http://localhost:3003/
